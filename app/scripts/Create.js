@@ -4,7 +4,6 @@ const createButton = function(data) {
     const button = document.createElement('button')
     button.id = 'create'
     button.dataParam = data
-    console.log(button.dataParam)
     button.addEventListener('click', createNote)
 
     return button

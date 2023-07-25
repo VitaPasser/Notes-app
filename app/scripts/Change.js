@@ -1,9 +1,8 @@
+import { idToRealId, addButtons } from './Utils.js'
 import { Display } from './Display.js'
 
 const addChangeButtons = function(app, data) {
-    data.notes.map(function (element) {
-        changeButton(app, data, element.id)
-    })
+    addButtons(app, data, changeButton)
 }
 
 const changeButton = function(app, data, id) {
@@ -18,8 +17,6 @@ const changeButton = function(app, data, id) {
 }
 
 const changeNote = function(data, id, evt) {
-    console.log(id)
-    console.log(data)
     data.notes[idToRealId(data, id)] = {
         "id": id,
         "created_at": "05/03/2023",
@@ -28,11 +25,6 @@ const changeNote = function(data, id, evt) {
         "date": []
     }
     Display(data)
-}
-
-const idToRealId = function(data, id) {
-    console.log(data)
-    return data.notes.findIndex((element) => element.id == id)
 }
 
 export { addChangeButtons }

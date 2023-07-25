@@ -4,14 +4,16 @@
         "created_at": "05/03/2023",
         "content": "Grocery shopping.",
         "category_id": 0,
-        "date": []
+        "date": [],
+        "archived": false
     },
     {
         "id": 1,
         "created_at": "12/04/2023",
         "content": "Explore underwater cities.",
         "category_id": 1,
-        "date": []
+        "date": [],
+        "archived": false
     },
     {
         "id": 2,
@@ -21,7 +23,8 @@
         "date": [
             "27/08/2023",
             "02/09/2023"
-        ]
+        ],
+        "archived": false
     },
     {
         "id": 3,
@@ -30,14 +33,16 @@
         "category_id": 0,
         "date": [
             "05/07/2023"
-        ]
+        ],
+        "archived": false
     },
     {
         "id": 4,
         "created_at": "15/07/2023",
         "content": "What if cats could talk?",
         "category_id": 1,
-        "date": []
+        "date": [],
+        "archived": false
     },
     {
         "id": 5,
@@ -46,7 +51,8 @@
         "category_id": 2,
         "date": [
             "28/01/2024"
-        ]
+        ],
+        "archived": false
     },
     {
         "id": 6,
@@ -55,6 +61,7 @@
         "category_id": 0,
         "date": [
             "05/08/2023"
-        ]
+        ],
+        "archived": false
     }
 ]
