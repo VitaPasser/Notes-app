@@ -1,12 +1,9 @@
 const idToRealId = function(data, id) {
-    console.log(data)
     return data.notes.findIndex((element) => element.id == id)
 }
 
-const addButtons = function(app, data, button) {
-    data.notes.map(function (element) {
-        button(app, data, element.id)
-    })
+const isArchived = function (element) {
+    return element.archived == true
 }
 
-export { idToRealId, addButtons }
+export { idToRealId, isArchived }

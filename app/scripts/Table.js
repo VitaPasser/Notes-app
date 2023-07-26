@@ -1,4 +1,5 @@
 import { getCategoryById } from './Data.js'
+import { isArchived } from './Utils.js'
 
 const nodeNotes = function ({ notes, categories }) {
     const node = document.createElement('table')
@@ -8,7 +9,10 @@ const nodeNotes = function ({ notes, categories }) {
     node.append(nodeTableHeader())
     notes.map(function (element) {
         const category = getCategoryById(element.category_id, categories)
-        node.append(nodeNote(element, category))
+        
+        if ( !isArchived(element) ){
+            node.append(nodeNote(element, category))
+        }
     })
 
     return node
@@ -23,7 +27,6 @@ const nodeNote = function (note, category) {
     node.innerHTML += `<td>${category.name}</td>\n`
     node.innerHTML += `<td>${note.content}</td>\n`
     node.innerHTML += `<td>${note.date.join(', ')}</td>\n`
-    node.innerHTML += `<i class="bi bi-archive" id="archive-${note.id}"></i>\n`
 
     return node;
 }
@@ -40,4 +43,4 @@ const nodeTableHeader = function () {
 
 }
 
-export { nodeNotes }
+export { nodeNotes, nodeTableHeader, nodeNote }

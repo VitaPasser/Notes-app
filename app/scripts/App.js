@@ -1,4 +1,7 @@
 import { data } from './Data.js'
 import { Display } from './Display.js'
+import { EnumWindows } from './EnumWindow.js'
 
-Display(data)
+const defaultConf = {display: EnumWindows.Index}
+
+Display(data, defaultConf)
