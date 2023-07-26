@@ -1,7 +1,7 @@
 import { data } from './Data.js'
 import { Display } from './Display.js'
-import { EnumWindows } from './EnumWindow.js'
+import { EnumFrames } from './Frames/EnumFrames.js'
 
-const defaultConf = {display: EnumWindows.Index}
+const defaultConf = { display: EnumFrames.Index, next_create_id: 7, id: null }
 
 Display(data, defaultConf)

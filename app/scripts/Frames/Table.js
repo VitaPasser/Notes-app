@@ -1,5 +1,5 @@
-import { getCategoryById } from './Data.js'
-import { isArchived } from './Utils.js'
+import { getCategoryById } from '../Data.js'
+import { isArchived } from '../Utils.js'
 
 const nodeNotes = function ({ notes, categories }) {
     const node = document.createElement('table')

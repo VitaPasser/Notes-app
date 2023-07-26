@@ -1,6 +1,6 @@
-import { isArchived } from './Utils.js'
+import { isArchived } from '../Utils.js'
 import { nodeNote, nodeTableHeader } from './Table.js'
-import { getCategoryById } from './Data.js'
+import { getCategoryById } from '../Data.js'
 
 const nodeArchivedNotes = function ({ notes, categories }) {
     const node = document.createElement('table')
@@ -8,7 +8,6 @@ const nodeArchivedNotes = function ({ notes, categories }) {
     node.id = 'notes'
 
     node.append(nodeTableHeader())
-    console.log(notes)
     notes.map(function (element) {
         const category = getCategoryById(element.category_id, categories)
         
