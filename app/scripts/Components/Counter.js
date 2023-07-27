@@ -1,13 +1,20 @@
+import countEqualsCategory from "../Service/Counter.js"
+
 const nodeCategories = function ({ notes, categories }) {
     const node = document.createElement('table')
 
     node.id = 'categoriesCount'
+    node.className = 'table'
 
     node.append(nodeTableHeader())
+
+    const tbody = document.createElement('tbody')
     categories.map(function (category) {
         const count = countEqualsCategory(category, notes)
-        node.append(nodeCategory(category, count))
+        tbody.append(nodeCategory(category, count))
     })
+
+    node.append(tbody)
 
     return node
 }
@@ -25,32 +32,16 @@ const nodeCategory = function (category, count) {
 }
 
 const nodeTableHeader = function () {
-    const node = document.createElement('tr')
+    const node = document.createElement('thead')
+    const tr = document.createElement('tr')
 
-    node.innerHTML += `<th>Category</th>\n`
-    node.innerHTML += `<th>Active</th>\n`
-    node.innerHTML += `<th>Archived</th>\n`
+    tr.innerHTML += `<th scope='col'>Category</th>\n`
+    tr.innerHTML += `<th scope='col'>Active</th>\n`
+    tr.innerHTML += `<th scope='col'>Archived</th>\n`
+
+    node.append(tr)
 
     return node
-}
-
-const countEqualsCategory = function(category, notes) {
-    const count = {
-        active: 0,
-        archived: 0
-    }
-
-    notes.forEach(note => {
-        if(category.id == note.category_id) {
-            if(note.archived) {
-                count.archived++
-            } else {
-                count.active++
-            }
-        }
-    })
-
-    return count
 }
 
 export { nodeCategories }

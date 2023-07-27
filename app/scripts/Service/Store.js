@@ -9,15 +9,16 @@ const storeNote = function(nodeForm, data, config, event) {
     const created_at =  new Date().toLocaleDateString('en-GB');
 
     const category_id = parseInt(nodeForm.querySelector(`select[id$='category']`).value)
-    let content = nodeForm.querySelector(`input[id$='content']`).value
+    let content = nodeForm.querySelector(`textarea[id$='content']`).value
     const date = content.match(/(\d{2}\/\d{2}\/\d{4})/g); 
     content = content.replace(/(\d{2}\/\d{2}\/\d{4})/g, '')
 
-    date.forEach(element => {
-        if (isNaN(new Date(element))) {
-            throw DateIsInvalid(element)
-        }
-    });
+    if (date != null)
+        date.forEach(element => {
+            if (isNaN(new Date(element))) {
+                throw DateIsInvalid(element)
+            }
+        });
 
     data.notes.push({
         "id": config.next_create_id++,
