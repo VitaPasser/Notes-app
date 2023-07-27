@@ -1,10 +1,14 @@
 import { Display } from '../Display.js'
 import { EnumFrames } from '../Enums/EnumFrames.js'
+import { configureDisplay } from '../Utils.js';
 
-const createNote = function(data, conf) {
-    
-    conf.display = EnumFrames.Index == conf.display ? EnumFrames.Archives : EnumFrames.Index
-    Display(data, conf)
+const createNote = function(data, config) {
+    config = configureDisplay(config, 
+        EnumFrames.Index == config.display 
+        ? EnumFrames.Archives 
+        : EnumFrames.Index)
+
+    Display(data, config)
 }
 
 export {createNote}

@@ -1,10 +1,10 @@
 import { drawUpdateForm } from "../../Service/UpdateRedirect.js"
 import { addButtons } from "./Buttons.js"
 
-const addChangeButtons = (app, data, conf) =>
-    addButtons(app, data, conf, changeButton)
+const addChangeButtons = (app, data, config) =>
+    addButtons(app, data, config, changeButton)
 
-const changeButton = function (app, data, id, conf) {
+const changeButton = function (app, data, id, config) {
     const nodeNote = app.querySelector(`tr[id$='${id}']`)
     if (nodeNote == null) return;
     const nodeChangeButton = document.createElement('i')
@@ -12,7 +12,7 @@ const changeButton = function (app, data, id, conf) {
     nodeChangeButton.className = "bi bi-pencil-square"
     nodeChangeButton.id = `change-${id}`
 
-    nodeChangeButton.addEventListener('click', drawUpdateForm.bind(null, data, conf, id))
+    nodeChangeButton.addEventListener('click', drawUpdateForm.bind(null, data, config, id))
     nodeNote.append(nodeChangeButton)
 }
 

@@ -1,8 +1,9 @@
 import { Display } from '../Display.js'
 import { EnumFrames } from '../Enums/EnumFrames.js';
+import { configureDisplay } from '../Utils.js';
 
-const storeNote = function(nodeForm, data, conf, e) {
-    e.preventDefault();
+const storeNote = function(nodeForm, data, config, event) {
+    event.preventDefault();
 
     const created_at =  new Date().toLocaleDateString('en-GB');
 
@@ -11,8 +12,14 @@ const storeNote = function(nodeForm, data, conf, e) {
     const date = content.match(/(\d{2}\/\d{2}\/\d{4})/g); 
     content = content.replace(/(\d{2}\/\d{2}\/\d{4})/g, '')
 
+    date.forEach(element => {
+        if (isNaN(new Date(element))) {
+            throw new Error(`"${element}" is invalid date}`)
+        }
+    });
+
     data.notes.push({
-        "id": conf.next_create_id++,
+        "id": config.next_create_id++,
         "created_at": created_at,
         "content": content,
         "category_id": category_id,
@@ -20,8 +27,8 @@ const storeNote = function(nodeForm, data, conf, e) {
         "archived": false
     })
 
-    conf.display = EnumFrames.Index
-    Display(data, conf)
+    config = configureDisplay(config, EnumFrames.Index)
+    Display(data, config)
 }
 
 export { storeNote }

@@ -2,4 +2,11 @@ const idToRealId = function(data, id) {
     return data.notes.findIndex((element) => element.id == id)
 }
 
-export { idToRealId }
+const configureDisplay = function (config, enum_frame) {
+    config.display_last = config.display
+    config.display = enum_frame
+    return config;
+}
+
+
+export { idToRealId, configureDisplay }

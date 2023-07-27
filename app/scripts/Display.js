@@ -4,30 +4,31 @@ import { EnumFrames } from './Enums/EnumFrames.js'
 import { nodeCreateNote } from './Components/FormCreate.js'
 import { nodeUpdateNote } from './Components/FormUpdate.js'
 import { tableFrame } from './Components/TableFrame.js'
+import RouteInThisFrameIsNotFound from './Exceptions/RouteInThisFrameIsNotFound.js'
 
-const Display = function (data, conf) {
+const Display = function (data, config) {
     const app = document.createElement('div')
     app.id = 'app'
 
-    switch (conf.display) {
+    switch (config.display) {
         case EnumFrames.Index:
-            tableFrame(app, data, conf, nodeNotes)
+            tableFrame(app, data, config, nodeNotes)
             break;
 
         case EnumFrames.Archives:
-            tableFrame(app, data, conf, nodeArchivedNotes)
+            tableFrame(app, data, config, nodeArchivedNotes)
             break;
 
         case EnumFrames.Create:
-            app.append(nodeCreateNote(data, conf))
+            app.append(nodeCreateNote(data, config))
             break;
 
         case EnumFrames.Edit:
-            app.append(nodeUpdateNote(data, conf))
+            app.append(nodeUpdateNote(data, config))
             break;
 
         default:
-            tableFrame(app, data, conf)
+            throw RouteInThisFrameIsNotFound(config.display)
             break;
     }
 

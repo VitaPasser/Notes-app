@@ -1,11 +1,11 @@
 import { updateNote } from "../Service/Update.js" 
 import { idToRealId } from "../Utils.js"
 
-const nodeUpdateNote = function (data, conf) {
+const nodeUpdateNote = function (data, config) {
     const node = document.createElement('form')
     node.id = 'update'
     
-    const id = idToRealId(data, conf.id)
+    const id = idToRealId(data, config.id)
     node.innerHTML += `<input type="text" id="content" value="${data.notes[id].content + data.notes[id].date.join(', ')}">\n`
     
     const nodeSelect = document.createElement('select')
@@ -20,10 +20,10 @@ const nodeUpdateNote = function (data, conf) {
     nodeButton.id = 'result'
     nodeButton.type = 'button'
     nodeButton.value = 'Update'
-    nodeButton.addEventListener('click', updateNote.bind(null, node, data, conf))
+    nodeButton.addEventListener('click', updateNote.bind(null, node, data, config))
     
     node.append(nodeButton)
-    node.onsubmit = updateNote.bind(null, node, data, conf)
+    node.onsubmit = updateNote.bind(null, node, data, config)
 
     return node
 }

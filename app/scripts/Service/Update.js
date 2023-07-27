@@ -1,17 +1,23 @@
 import { Display } from '../Display.js'
-import { EnumFrames } from '../Enums/EnumFrames.js';
-import { idToRealId } from '../Utils.js'
+import { idToRealId, configureDisplay } from '../Utils.js'
 
-const updateNote = function(nodeForm, data, conf, e) {
-    e.preventDefault();
+const updateNote = function(nodeForm, data, config, event) {
+    event.preventDefault();
 
-    const id = idToRealId(data, conf.id)
+    const id = idToRealId(data, config.id)
     const created_at = data.notes[id].created_at;
 
     const category_id = parseInt(nodeForm.querySelector(`select[id$='category']`).value)
+
     let content = nodeForm.querySelector(`input[id$='content']`).value
     const date = content.match(/(\d{2}\/\d{2}\/\d{4})/g); 
     content = content.replace(/(\d{2}\/\d{2}\/\d{4})/g, '')
+
+    date.forEach(element => {
+        if (isNaN(new Date(element))) {
+            throw new Error(`"${element}" is invalid date}`)
+        }
+    });
 
     data.notes[id] = {
         "id": id,
@@ -19,12 +25,12 @@ const updateNote = function(nodeForm, data, conf, e) {
         "content": content,
         "category_id": category_id,
         "date": date == null ? [] : [...date],
-        "archived": false
+        "archived": data.notes[id].archived
     }
 
-    conf.display = EnumFrames.Index
-    conf.id = null
-    Display(data, conf)
+    config = configureDisplay(config, config.display_last)
+    config.id = null
+    Display(data, config)
 }
 
 export { updateNote }

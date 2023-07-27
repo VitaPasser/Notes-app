@@ -1,6 +1,6 @@
 import { storeNote } from "../Service/Store.js" 
 
-const nodeCreateNote = function (data, conf) {
+const nodeCreateNote = function (data, config) {
     const node = document.createElement('form')
     node.id = 'create'
     
@@ -18,18 +18,12 @@ const nodeCreateNote = function (data, conf) {
     nodeButton.id = 'result'
     nodeButton.type = 'button'
     nodeButton.value = 'Create'
-    nodeButton.addEventListener('click', storeNote.bind(null, node, data, conf))
+    nodeButton.addEventListener('click', storeNote.bind(null, node, data, config))
     
     node.append(nodeButton)
-    node.onsubmit = storeNote.bind(null, node, data, conf)
+    node.onsubmit = storeNote.bind(null, node, data, config)
 
     return node
-}
-
-const onKeyDown = function (e) {
-    if(e.keyCode == 13) {
-        storeNote(node, data, conf)
-    }
 }
 
 export { nodeCreateNote }
