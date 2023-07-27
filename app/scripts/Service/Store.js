@@ -1,6 +1,7 @@
 import { Display } from '../Display.js'
 import { EnumFrames } from '../Enums/EnumFrames.js';
 import { configureDisplay } from '../Utils.js';
+import DateIsInvalid from '../Exceptions/DateIsInvalid.js';
 
 const storeNote = function(nodeForm, data, config, event) {
     event.preventDefault();
@@ -14,7 +15,7 @@ const storeNote = function(nodeForm, data, config, event) {
 
     date.forEach(element => {
         if (isNaN(new Date(element))) {
-            throw new Error(`"${element}" is invalid date}`)
+            throw DateIsInvalid(element)
         }
     });
 

@@ -1,5 +1,6 @@
 import { Display } from '../Display.js'
 import { idToRealId, configureDisplay } from '../Utils.js'
+import DateIsInvalid from '../Exceptions/DateIsInvalid.js';
 
 const updateNote = function(nodeForm, data, config, event) {
     event.preventDefault();
@@ -15,7 +16,7 @@ const updateNote = function(nodeForm, data, config, event) {
 
     date.forEach(element => {
         if (isNaN(new Date(element))) {
-            throw new Error(`"${element}" is invalid date}`)
+            throw DateIsInvalid(element)
         }
     });
 
