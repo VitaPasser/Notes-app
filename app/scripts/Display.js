@@ -1,14 +1,9 @@
-import { nodeNotes } from './Frames/Table.js'
-import { createButton } from './Buttons/Create.js'
-import { addDeleteButtons } from './Buttons/Delete.js'
-import { addChangeButtons } from './Buttons/Update.js'
-import { nodeCategories } from './Frames/Counter.js'
-import { addArchiveButtons } from './Buttons/Archive.js'
-import { nodeArchivedNotes } from './Frames/TableArchives.js'
-import { archiveButton } from './Buttons/ShowArchives.js'
-import { EnumFrames } from './Frames/EnumFrames.js'
-import { nodeCreateNote } from './Frames/FormCreate.js'
-import { nodeUpdateNote } from './Frames/FormUpdate.js'
+import { nodeNotes } from './Components/Table.js'
+import { nodeArchivedNotes } from './Components/TableArchives.js'
+import { EnumFrames } from './Enums/EnumFrames.js'
+import { nodeCreateNote } from './Components/FormCreate.js'
+import { nodeUpdateNote } from './Components/FormUpdate.js'
+import { tableFrame } from './Components/TableFrame.js'
 
 const Display = function (data, conf) {
     const app = document.createElement('div')
@@ -30,7 +25,7 @@ const Display = function (data, conf) {
         case EnumFrames.Edit:
             app.append(nodeUpdateNote(data, conf))
             break;
-    
+
         default:
             tableFrame(app, data, conf)
             break;
@@ -38,16 +33,6 @@ const Display = function (data, conf) {
 
     const app_changing = document.querySelector('div[id$="app"]')
     app_changing.replaceWith(app)
-}
-
-const tableFrame = function (app, data, conf, table) {
-    app.append(archiveButton(data, conf))
-    app.append(table(data))
-    app.append(createButton(data, conf))
-    addChangeButtons(app, data, conf)
-    addArchiveButtons(app, data, conf)
-    addDeleteButtons(app, data, conf)
-    app.append(nodeCategories(data))
 }
 
 export { Display }

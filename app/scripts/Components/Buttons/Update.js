@@ -1,4 +1,4 @@
-import { drawUpdateForm } from "../Service/UpdateRedirect.js" 
+import { drawUpdateForm } from "../../Service/UpdateRedirect.js"
 import { addButtons } from "./Buttons.js"
 
 const addChangeButtons = (app, data, conf) =>

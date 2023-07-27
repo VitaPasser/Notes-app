@@ -1,4 +1,4 @@
-import { archiveNote } from "../Service/Archive.js"
+import { archiveNote } from "../../Service/Archive.js"
 import { addButtons } from "./Buttons.js"
 
 const addArchiveButtons = (app, data, conf) =>

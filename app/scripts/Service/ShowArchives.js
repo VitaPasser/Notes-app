@@ -1,5 +1,5 @@
 import { Display } from '../Display.js'
-import { EnumFrames } from '../Frames/EnumFrames.js'
+import { EnumFrames } from '../Enums/EnumFrames.js'
 
 const createNote = function(data, conf) {
     

@@ -1,5 +1,4 @@
 import { getCategoryById } from '../Data.js'
-import { isArchived } from '../Utils.js'
 
 const nodeNotes = function ({ notes, categories }) {
     const node = document.createElement('table')
@@ -10,7 +9,7 @@ const nodeNotes = function ({ notes, categories }) {
     notes.map(function (element) {
         const category = getCategoryById(element.category_id, categories)
         
-        if ( !isArchived(element) ){
+        if ( !element.archived ){
             node.append(nodeNote(element, category))
         }
     })

@@ -1,4 +1,4 @@
-import { deleteNote } from "../Service/Delete.js"
+import { deleteNote } from "../../Service/Delete.js"
 import { addButtons } from "./Buttons.js"
 
 const addDeleteButtons = (app, data, conf) =>

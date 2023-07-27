@@ -1,5 +1,5 @@
 import { Display } from "../Display.js";
-import { EnumFrames } from "../Frames/EnumFrames.js";
+import { EnumFrames } from "../Enums/EnumFrames.js";
 
 const drawUpdateForm = function (data, conf, id) {
     conf.display = EnumFrames.Edit;

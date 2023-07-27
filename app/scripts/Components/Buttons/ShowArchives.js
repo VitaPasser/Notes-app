@@ -1,5 +1,5 @@
-import { createNote } from "../Service/ShowArchives.js"
-import { EnumFrames } from '../Frames/EnumFrames.js'
+import { createNote } from "../../Service/ShowArchives.js"
+import { EnumFrames } from '../../Enums/EnumFrames.js'
 
 const archiveButton = function(data, conf) {
     const button = document.createElement('button')

@@ -1,4 +1,4 @@
-import { drawCreateForm } from "../Service/CreateRedirect.js"
+import { drawCreateForm } from "../../Service/CreateRedirect.js"
 
 const createButton = function (data, conf) {
     const button = document.createElement('button')
