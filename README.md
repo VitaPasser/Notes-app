@@ -1,5 +1,5 @@
 # Notes app
 
-It's my solution task 1 about creating some notes manager.
+It's my solution notes manager in pure js.
 
 Link on app: https://vitapasser.github.io/Notes-app/app/
